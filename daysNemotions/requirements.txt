@@ -34,7 +34,6 @@ pyOpenSSL==20.0.1
 pypiwin32==223
 python-decouple==3.3
 pytz==2020.4
-pywin32==227
 requests==2.25.1
 service-identity==18.1.0
 six==1.15.0
