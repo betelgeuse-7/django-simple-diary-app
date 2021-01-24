@@ -1,0 +1,40 @@
+.login-container {
+  margin: 0px 350px 0px 350px;
+}
+
+.login-container form input {
+  width: 275px;
+  height: 47px;
+  border-radius: 10px;
+  background-color: var(--signup-input-color);
+  border: none;
+  outline: none;
+  padding: 10px;
+  margin: 10px;
+  display: block;
+}
+
+.login-container form button {
+  position: relative;
+  left: 165px;
+  background-color: var(--great);
+}
+
+.login-container form button:hover {
+  background-color: #066606;
+}
+
+.login-container form {
+  margin-top: 150px;
+}
+
+.login-container form h1 {
+  margin-left: 10px;
+  margin-bottom: 50px;
+}
+
+@media (max-width: 441px) {
+  .login-container {
+    margin: 0px;
+  }
+}

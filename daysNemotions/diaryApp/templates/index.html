@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href=" {% static 'index.css' %} ">
+    {% block title %}
+        <title>daysNfeels</title>
+    {% endblock %}
+</head>
+
+    <body>
+        {% if request.user.is_authenticated %}
+            <header>
+                <div class="navbar">
+                    <h2 onclick="location.href='/' " style="cursor: pointer;">daysNfeels</h2>
+                    <a href=" {% url 'diaryApp:diary' %} " id="diary">Diary</a>
+                    <a href=" {% url 'diaryApp:days' %} " id="days">Days</a>
+                    <div> {{request.user.username}}   <a href=" {% url 'diaryApp:logout' %} " id="logout">Logout</a></div>
+    
+                </div>
+            </header>
+    
+        {% else %}
+    
+                <header>
+                    <div class="navbar">
+                        <h2 onclick="location.href='/' " style="cursor: pointer;">daysNfeels</h2>
+                        <a href=" {% url 'diaryApp:login' %} " id="login">Login</a>
+        
+                    </div>
+                </header>
+            
+            {% endif %}
+        
+            {% block main %}
+                <main>
+                    <div class="left">
+                        <h1>Save your life...</h1>
+                        <h3>and continue where you left off.</h3>
+                        <img src=" {% static 'chevron-down-solid.svg' %} " alt="Scroll down" id="down">
+                    </div>
+                    <div class="right">
+                        <img src=" {% static "diary351fd.jfif" %} " alt="Diary">
+                    </div>
+                </main>
+                <div class="second-half">
+                    <section class="signup-form-section">
+                        <h3>Sign up to save your day.</h3>
+                        <form action="/" method="POST">
+                            {% csrf_token %}
+                            <div id="1">
+                                <input type="text" placeholder="Name" name="name">
+                                <input type="email" placeholder="E-mail" name="email">
+                            </div>
+                            <div id="2">
+                                <input type="text" placeholder="Username" name="username">
+                                <input type="password" placeholder="Password" name="password1">
+                                <input type="password" placeholder="Password again" name="password2">
+                                <button type="submit" class="signup" style="margin: 0;" id="registerBtn">Sign up</button>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+            {% endblock %}
+        </body>
+</html>

@@ -1,0 +1,72 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}
+
+<title>How do you feel today, {{request.user.username}} ?</title>
+<link rel="stylesheet" href=" {% static 'diary.css' %} ">
+
+{% endblock %}
+
+{% block main %}
+    <div class="diary-container">
+        <div class="head">
+            <h1>How was your day?</h1>
+            <h3>What did you do today?</h3>
+        </div>
+        <form action=" {% url 'diaryApp:diary' %} " method="POST" id="form">
+            {% csrf_token %}
+            <div class="feel">
+
+                <input type="button" class="feelBtn" id="terrible" style="background-color:#df5151;" data-feel="1">
+                <input type="button" class="feelBtn" id="bad" style="background-color: #eb9557;" data-feel="2">
+                <input type="button" class="feelBtn" id="meh" style="background-color: #ffd233;" data-feel="3">
+                <input type="button" class="feelBtn" id="good" style="background-color: #a8d075;" data-feel="4">
+                <input type="button" class="feelBtn" id="great" style="background-color:  #1eba37;"  data-feel="5">
+
+            </div>
+            <div class="text">
+                <textarea cols="30" rows="10" name="text"></textarea>
+            </div>
+            <button type="submit" id="save">Save</button>
+        </form>
+    </div>
+
+    <script>
+        const feelBtns = document.querySelectorAll('.feelBtn');
+        const spans = document.querySelectorAll(".span");
+        const form = document.querySelector('#form');
+        const saveBtn = document.getElementById("save");
+
+        // getting all the siblings of e.target ? much complex.
+
+        const sendFeelDataset = (e) => {
+            feelBtns.forEach(item => {
+                item.style.display = 'none';
+            })
+            
+            e.target.style.display = 'block';
+            
+            const hiddenInput = document.createElement("input");
+
+            hiddenInput.setAttribute('type', 'hidden');
+            hiddenInput.setAttribute('value', e.target.dataset.feel)
+            hiddenInput.setAttribute('name', 'feelData');
+
+            saveBtn.style.backgroundColor = e.target.style.backgroundColor;
+
+            form.appendChild(hiddenInput);
+
+        }
+
+
+        feelBtns.forEach((btn) => {
+            btn.addEventListener("click", sendFeelDataset);
+        })
+
+
+    </script>
+
+{% endblock %}
+
+

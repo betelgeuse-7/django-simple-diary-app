@@ -1,0 +1,136 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}
+
+    <title>Past days | {{request.user.username}} </title>
+    <link rel="stylesheet" href=" {% static 'days.css' %} ">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+
+{% endblock %}
+
+{% block main %}
+
+<div class="days-container">
+    <div class="head">
+        <h1>Your past days.</h1>
+        <span class="filter">
+            <h3>Filter</h3>
+            <span>
+                <input type="button" class="filterBtn" id="1" style="background-color:#df5151;" data-feelfilter="1">
+                <input type="button" class="filterBtn" id="2" style="background-color:#eb9557;" data-feelfilter="2">
+                <input type="button" class="filterBtn" id="3" style="background-color:#ffd233;" data-feelfilter="3">
+                <input type="button" class="filterBtn" id="4" style="background-color:#a8d075;" data-feelfilter="4">
+                <input type="button" class="filterBtn" id="5" style="background-color:#1eba37;"  data-feelfilter="5">
+            </span>
+        </span>
+    </div>
+    <div class="days">
+        {% if days %}
+            {% for day in days %}
+                
+                <div class="day" style="background-color: #1eba37; border-radius: 10px;">
+                    <div class="day-head">
+                        <h2> {{day.date}} </h2>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="day-main" style="display: none;"">
+                        <section data-feelpoint=" {{day.feel_point}} " class="textSec">
+                            {{day.diary_text}}
+                        </section>
+                    </div>
+                </div>
+
+            {% endfor %}
+
+
+        {% else %}
+            <h3>No records.</h3>
+
+        {% endif %}
+    </div>
+</div>
+
+
+<script>
+    const downArrow = document.querySelectorAll('.fa-chevron-down');
+
+    function showContent(e) {
+        const parent = e.target.parentElement;
+        const siblingOfParent = parent.nextElementSibling;
+
+        parent.style.borderRadius = '10px 10px 0px 0px';
+
+        siblingOfParent.style.display = 'block';
+    }
+
+    downArrow.forEach((arrow) => {
+        arrow.addEventListener("click", showContent);
+    })
+
+    // null ???
+    const filterBtns = document.querySelectorAll('.feelBtn');
+
+    const one = document.getElementById('1');
+    const two = document.getElementById('2');
+    const three = document.getElementById('3');
+    const four = document.getElementById('4');
+    const five = document.getElementById('5');
+
+    const secs = document.getElementsByClassName('textSec');
+    
+    for(var sec=0; sec<secs.length; sec++) {
+        var currentSec = secs[sec];
+        var currentFeelPoint = currentSec.dataset.feelpoint;
+        var currentDay = currentSec.parentElement.parentElement;        
+
+        if(currentFeelPoint == 1) {
+            currentDay.style.backgroundColor = one.style.backgroundColor;
+        } else if(currentFeelPoint == 2) {
+            currentDay.style.backgroundColor = two.style.backgroundColor;
+        } else if(currentFeelPoint == 3) {
+            currentDay.style.backgroundColor = three.style.backgroundColor;
+        } else if(currentFeelPoint == 4) {
+            currentDay.style.backgroundColor = four.style.backgroundColor;
+        } else if(currentFeelPoint == 5) {
+            currentDay.style.backgroundColor = five.style.backgroundColor;
+        }  
+    }
+
+    const days = document.querySelectorAll(".day");
+
+    const filterByFeel = (e) => {
+        const btnColor = e.target.style.backgroundColor;
+        days.forEach(day => {
+            if(day.style.backgroundColor != btnColor) {
+                day.style.display = 'none';
+            } else {
+                day.style.display = 'block';
+            }
+        })
+
+
+    }
+
+    // filterBtns length is 0 
+    // filterBtns is null.
+    // thats why i am doing it this way.
+    one.addEventListener('click', filterByFeel);
+    two.addEventListener('click', filterByFeel);
+    three.addEventListener('click', filterByFeel);
+    four.addEventListener('click', filterByFeel);
+    five.addEventListener('click', filterByFeel);
+
+    
+
+</script>
+
+
+{% endblock %}
+
+
+
+
+
+
+

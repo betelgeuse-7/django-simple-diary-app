@@ -1,0 +1,203 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+:root {
+  --main-yellow: #fdf3cf;
+  --main-orange: #f89c14;
+  --main-purple: #483c5b;
+  --signup-input-color: #dedede;
+  --terrible: #df5151;
+  --bad: #eb9557;
+  --meh: #ffd233;
+  --good: #a8d075;
+  --great: #1eba37;
+  --diary-input-bg-color: #f4e5ae;
+}
+
+body {
+  background-color: var(--main-yellow);
+}
+
+header,
+main {
+  margin: 0px 350px 0px 350px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 55px;
+}
+
+.navbar h2 {
+  font-weight: 300;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+main {
+  margin-top: 230px;
+}
+
+.left h1 {
+  font-size: 40px;
+  font-weight: 800;
+  margin-bottom: 25px;
+}
+
+.left h3 {
+  font-weight: 300;
+  font-size: 15px;
+}
+
+.left img {
+  width: 50px;
+  height: 50px;
+  margin-top: 50px;
+}
+
+.signup {
+  background-color: var(--main-orange);
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 19px;
+  width: 118px;
+  height: 50px;
+  border-radius: 10px;
+  margin-top: 100px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.signup:hover {
+  background-color: #dd890b;
+}
+
+.right,
+.left {
+  display: inline;
+}
+
+.right img {
+  width: 482px;
+  height: 365px;
+  border-radius: 20px;
+}
+
+.right {
+  position: relative;
+  float: right;
+  bottom: 150px;
+}
+
+.second-half {
+  background-color: var(--main-purple);
+  height: 900px;
+  padding: 40px 0px;
+  margin-top: 300px;
+}
+
+.signup-form-section {
+  margin: 190px 350px 0px 350px;
+}
+
+.signup-form-section h3 {
+  color: #fff;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 90px;
+}
+
+.signup-form-section input {
+  width: 275px;
+  height: 47px;
+  border-radius: 10px;
+  background-color: var(--signup-input-color);
+  border: none;
+  outline: none;
+  padding: 10px;
+  margin: 10px;
+  display: block;
+}
+
+.signup-form-section form {
+  margin-left: 20px;
+  display: flex;
+  width: 800px;
+  height: auto;
+  flex-wrap: wrap;
+}
+
+.signup-form-section form button {
+  float: right;
+  position: relative;
+  right: 10px;
+  top: 30px;
+}
+
+@media (max-width: 441px) {
+  header,
+  main {
+    margin: 0px 5px;
+    padding: 0;
+  }
+
+  .navbar {
+    margin-top: 5px;
+    padding: 0px 5px;
+  }
+
+  .signup-form-section {
+    margin: 0px;
+  }
+
+  .second-half {
+    margin: 0;
+    height: auto;
+    margin-top: 50px;
+  }
+
+  .signup-form-section input {
+    margin: 3px;
+    width: 180px;
+    height: 35px;
+  }
+
+  .left h1 {
+    font-size: 30px;
+    margin-top: 15px;
+  }
+
+  .right img {
+    display: none;
+  }
+
+  .signup-form-section h3 {
+    font-size: 25px;
+    margin: 0px;
+    padding-left: 5px;
+  }
+
+  #registerBtn {
+    width: 130px;
+    height: 35px;
+  }
+  #down {
+    margin-top: 8px;
+    width: 25px;
+    height: 25px;
+  }
+}

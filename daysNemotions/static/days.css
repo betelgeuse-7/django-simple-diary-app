@@ -1,0 +1,111 @@
+body {
+  padding-bottom: 70px;
+}
+
+.days-container {
+  margin: 130px 350px 0px 350px;
+}
+
+.filterBtn {
+  width: 35px;
+  height: 35px;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+h1,
+h2 {
+  font-weight: 450;
+}
+
+.days {
+  display: block;
+}
+
+.day-head {
+  color: #fff;
+  width: 450px;
+  height: auto;
+  padding-bottom: 10px;
+  cursor: pointer;
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.day-head i {
+  margin-top: 10px;
+  margin-right: 15px;
+}
+
+.day-head h2 {
+  margin-left: 15px;
+  font-size: 20px;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filter {
+  position: relative;
+  right: 150px;
+}
+
+.filter h3 {
+  margin-bottom: 20px;
+}
+
+.day {
+  color: #fff;
+  width: 450px;
+  height: auto;
+  padding-bottom: 10px;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.day-main {
+  color: #fff;
+  width: 450px;
+  height: auto;
+  padding-bottom: 10px;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.day-main section {
+  padding-left: 10px;
+}
+
+@media (max-width: 441px) {
+  .days-container {
+    margin: 0px;
+  }
+  .day {
+    width: 100vw;
+  }
+  .day-head i {
+    position: relative;
+    right: 50px;
+  }
+
+  .filter {
+    width: 100vw;
+    position: relative;
+    left: 100px;
+  }
+
+  .filter h3 {
+    display: none;
+  }
+
+  .head h1 {
+    font-size: 20px;
+  }
+
+  .head {
+    margin-top: 50px;
+  }
+}

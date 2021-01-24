@@ -1,0 +1,26 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+
+<title>Log in</title>
+<link rel="stylesheet" href=" {% static 'login.css' %} ">
+
+{% endblock %}
+
+{% block main %}
+
+
+    <div class="login-container">
+        <form action=" {% url 'diaryApp:login' %} " method="POST">
+            {% csrf_token %}
+            <h1>Log in</h1>
+            <input type="text" placeholder="Username" name="username">
+            <input type="password" placeholder="Password" name="password">
+            <button type="submit" class="signup" style="margin: 0;" id="signupbtn">Log in</button>
+        </form>
+        
+    </div>
+
+
+{% endblock %}
